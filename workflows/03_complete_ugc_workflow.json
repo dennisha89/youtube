@@ -1,0 +1,320 @@
+{
+  "last_node_id": 8,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UGCVideoDownloader",
+      "pos": [100, 100],
+      "size": [350, 80],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "links": [1]
+        },
+        {
+          "name": "video_info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "1. Download Video",
+      "properties": {},
+      "widgets_values": [
+        "https://youtube.com/watch?v=YOUR_VIDEO_ID",
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "UGCScriptExtractor",
+      "pos": [500, 100],
+      "size": [350, 80],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "script_text",
+          "type": "STRING",
+          "links": [2]
+        },
+        {
+          "name": "transcript_json",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "transcript_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "2. Extract Script",
+      "properties": {},
+      "widgets_values": [
+        "",
+        "base"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "UGCScriptVariation",
+      "pos": [900, 100],
+      "size": [350, 120],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "original_script",
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "variations_json",
+          "type": "STRING",
+          "links": [3]
+        },
+        {
+          "name": "variation_1",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "variation_2",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "3. Generate Variations",
+      "properties": {},
+      "widgets_values": [
+        "",
+        3,
+        ""
+      ]
+    },
+    {
+      "id": 4,
+      "type": "UGCScriptVariationSelector",
+      "pos": [1300, 100],
+      "size": [350, 80],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "variations_json",
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "script",
+          "type": "STRING",
+          "links": [4, 5]
+        },
+        {
+          "name": "persona",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "word_count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "title": "4. Select Variation #1",
+      "properties": {},
+      "widgets_values": [
+        "",
+        0
+      ]
+    },
+    {
+      "id": 5,
+      "type": "UGCVoiceGenerator",
+      "pos": [1700, 100],
+      "size": [350, 100],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "script",
+          "type": "STRING",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "5. Generate Voice",
+      "properties": {},
+      "widgets_values": [
+        "",
+        "male_1",
+        "variation_1.mp3"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "UGCAvatarGenerator",
+      "pos": [2100, 100],
+      "size": [350, 140],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "script",
+          "type": "STRING",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video_id",
+          "type": "STRING",
+          "links": [6]
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "service_response",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "6. Generate Avatar Video",
+      "properties": {},
+      "widgets_values": [
+        "",
+        "heygen",
+        "",
+        "",
+        "#FFFFFF"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "UGCAvatarStatusChecker",
+      "pos": [2500, 100],
+      "size": [350, 80],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_id",
+          "type": "STRING",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "video_url",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "full_response",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "7. Check Status",
+      "properties": {},
+      "widgets_values": [
+        "",
+        "heygen"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "UGCAvatarDownloader",
+      "pos": [2900, 100],
+      "size": [350, 80],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_id",
+          "type": "STRING",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "8. Download Video",
+      "properties": {},
+      "widgets_values": [
+        "",
+        "heygen",
+        "variation_1.mp4"
+      ]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "STRING"],
+    [2, 2, 0, 3, 0, "STRING"],
+    [3, 3, 0, 4, 0, "STRING"],
+    [4, 4, 0, 5, 0, "STRING"],
+    [5, 4, 0, 6, 0, "STRING"],
+    [6, 6, 0, 7, 0, "STRING"],
+    [6, 6, 0, 8, 0, "STRING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8,
+      "offset": [0, 0]
+    }
+  },
+  "version": 0.4
+}

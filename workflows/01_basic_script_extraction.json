@@ -1,0 +1,124 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 4,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UGCVideoDownloader",
+      "pos": [100, 100],
+      "size": [400, 100],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "links": [1],
+          "slot_index": 0
+        },
+        {
+          "name": "video_info",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UGCVideoDownloader"
+      },
+      "widgets_values": [
+        "https://youtube.com/watch?v=YOUR_VIDEO_ID"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "UGCScriptExtractor",
+      "pos": [600, 100],
+      "size": [400, 100],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "script_text",
+          "type": "STRING",
+          "links": [2],
+          "slot_index": 0
+        },
+        {
+          "name": "transcript_json",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "transcript_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UGCScriptExtractor"
+      },
+      "widgets_values": [
+        "base"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "UGCScriptVariation",
+      "pos": [1100, 100],
+      "size": [400, 150],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "original_script",
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "variations_json",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "variation_1",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "variation_2",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UGCScriptVariation"
+      },
+      "widgets_values": [
+        "",
+        3,
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "STRING"],
+    [2, 2, 0, 3, 0, "STRING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

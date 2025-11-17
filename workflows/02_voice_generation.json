@@ -1,0 +1,110 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 4,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UGCTextInput",
+      "pos": [100, 100],
+      "size": [400, 200],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [1],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UGCTextInput"
+      },
+      "widgets_values": [
+        "Hey everyone! Today I'm reviewing this amazing protein powder. It tastes great, mixes well, and has excellent macros. Highly recommended!"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "UGCVoiceGenerator",
+      "pos": [600, 100],
+      "size": [400, 150],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "script",
+          "type": "STRING",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UGCVoiceGenerator"
+      },
+      "widgets_values": [
+        "",
+        "male_1",
+        "my_review.mp3"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "UGCVoiceGenerator",
+      "pos": [600, 300],
+      "size": [400, 150],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "script",
+          "type": "STRING",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UGCVoiceGenerator"
+      },
+      "widgets_values": [
+        "",
+        "female_1",
+        "my_review_female.mp3"
+      ]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "STRING"],
+    [1, 1, 0, 3, 0, "STRING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
